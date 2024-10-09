@@ -20,7 +20,11 @@ public class Processo {
     @Column(name = "descricao")
     private String descricao;
 
-    // Getters and Setters
+    @Column(name = "status_processo_id", nullable = false)
+    private Long statusProcessoId;
+
+    //getters e setters
+
     public Long getId() {
         return id;
     }
@@ -52,4 +56,14 @@ public class Processo {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public Long getStatusProjeto() {
+        return statusProcessoId;
+    }
+
+    public void setStatusProjeto(Long statusProjeto) {
+        this.statusProcessoId = statusProjeto;
+    }
+
+
 }
