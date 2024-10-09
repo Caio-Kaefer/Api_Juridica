@@ -16,8 +16,8 @@ public class ParteEnvolvida {
     @Column(name = "cpf_cnpj", unique = true, nullable = false)
     private String cpfCnpj;
 
-    @Column(name = "tipo", nullable = false)
-    private String tipo;  // Example values: "autor", "réu", "advogado"
+    @Column(name = "tipo_id", nullable = false)
+    private Long tipoId;  // Example values: "autor", "réu", "advogado"
 
     @Column(name = "contato_email")
     private String email;
@@ -30,10 +30,10 @@ public class ParteEnvolvida {
 
     public ParteEnvolvida() {}
 
-    public ParteEnvolvida(String nomeCompleto, String cpfCnpj, String tipo, String email, String telefone, Long processoId) {
+    public ParteEnvolvida(String nomeCompleto, String cpfCnpj, Long tipoId, String email, String telefone, Long processoId) {
         this.nomeCompleto = nomeCompleto;
         this.cpfCnpj = cpfCnpj;
-        this.tipo = tipo;
+        this.tipoId = tipoId;
         this.email = email;
         this.telefone = telefone;
         this.processoId = processoId;
@@ -64,12 +64,12 @@ public class ParteEnvolvida {
         this.cpfCnpj = cpfCnpj;
     }
 
-    public String getTipo() {
-        return tipo;
+    public Long getTipoId() {
+        return tipoId;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipoId(Long tipoId) {
+        this.tipoId = tipoId;
     }
 
     public String getEmail() {
@@ -88,11 +88,11 @@ public class ParteEnvolvida {
         this.telefone = telefone;
     }
 
-    public Long getProcesso() {
+    public Long getProcessoId() {
         return this.processoId;
     }
 
-    public void setProcesso(Long processo) {
+    public void setProcessoId(Long processo) {
         this.processoId = processo;
     }
 }

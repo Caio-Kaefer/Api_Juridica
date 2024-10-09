@@ -21,16 +21,4 @@ public class StatusProcessoService {
         return statusProcessoRepository.findAll();
     }
 
-    public StatusProcesso saveStatus(StatusProcesso statusProjeto) {
-        statusProjeto.setId(null);
-        return statusProcessoRepository.save(statusProjeto);
-    }
-
-    public StatusProcesso getStatusById(Long id) {
-        return statusProcessoRepository.findById(id).orElse(null);
-    }
-
-    public void deleteStatus(Long id) {
-        statusProcessoRepository.deleteById(id);
-    }
 }

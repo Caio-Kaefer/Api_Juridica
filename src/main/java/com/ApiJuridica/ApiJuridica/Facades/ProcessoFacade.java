@@ -1,5 +1,7 @@
 package com.ApiJuridica.ApiJuridica.Facades;
 
+import com.ApiJuridica.ApiJuridica.Entities.Dtos.ProcessoDto;
+import com.ApiJuridica.ApiJuridica.Entities.Dtos.ProcessoUpdateDto;
 import com.ApiJuridica.ApiJuridica.Entities.Processo;
 import com.ApiJuridica.ApiJuridica.Entities.StatusProcesso;
 import com.ApiJuridica.ApiJuridica.Services.ProcessoService;
@@ -40,11 +42,19 @@ public class ProcessoFacade {
         return processoService.findByStatusProcessoId(statusId);
     }
 
-    public Processo saveProcesso(Processo processo) {
+    public Processo saveProcesso(ProcessoDto processo) {
         return processoService.save(processo);
     }
 
     public void deleteProcesso(Long id) {
         processoService.deleteById(id);
+    }
+
+    public List<StatusProcesso> getAllStatus() {
+        return statusProcessoService.getAllStatus();
+    }
+
+    public Processo updateProcesso(Long id, ProcessoUpdateDto processoUpdateDtoDto) {
+        return processoService.update(processoUpdateDtoDto, id);
     }
 }

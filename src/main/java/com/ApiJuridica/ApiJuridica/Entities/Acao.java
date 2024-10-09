@@ -18,12 +18,11 @@ public class Acao {
     private String descricao;
 
     @Column(name = "processo_id")
-    private Long ProcessoId;
+    private Long processoId;
 
     @Column(name = "tipo_acao_id")
     private Long tipoAcaoId;
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -57,12 +56,10 @@ public class Acao {
     }
 
     public Long getProcessoId() {
-        return this.ProcessoId;
+        return processoId;
     }
 
     public void setProcessoId(Long ProcessoId) {
-        this.ProcessoId = ProcessoId;
+        this.processoId = ProcessoId;
     }
-
-
 }

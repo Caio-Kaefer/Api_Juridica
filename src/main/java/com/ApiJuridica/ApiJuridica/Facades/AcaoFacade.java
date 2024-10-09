@@ -1,6 +1,7 @@
 package com.ApiJuridica.ApiJuridica.Facades;
 
 import com.ApiJuridica.ApiJuridica.Entities.Acao;
+import com.ApiJuridica.ApiJuridica.Entities.Dtos.AcaoDto;
 import com.ApiJuridica.ApiJuridica.Entities.TipoAcao;
 import com.ApiJuridica.ApiJuridica.Services.AcaoService;
 import com.ApiJuridica.ApiJuridica.Services.TipoAcaoService;
@@ -26,18 +27,26 @@ public class AcaoFacade {
         return acaoService.getAllAcoes();
     }
 
-    public Optional<Acao> getAcaoById(Long id) {
+    public List<Acao> getAcoesByProcessoId(Long processoId) {
+        return acaoService.getAcoesByProcessoId(processoId);
+    }
+
+    public Acao getAcaoById(Long id) {
         return acaoService.getAcaoById(id);
     }
 
-    public Acao saveAcao(Acao acao) {
+    public Acao saveAcao(AcaoDto acaoDto) {
         List<TipoAcao> tiposAcao = tipoAcaoService.getAll();
         boolean tipoAcaoExists = tiposAcao.stream()
-                .anyMatch(tipo -> tipo.getId().equals(acao.getTipoAcao()));
+                .anyMatch(tipo -> tipo.getId().equals(acaoDto.getTipoAcaoId()));
         if (!tipoAcaoExists) {
             throw new IllegalArgumentException("O ID do tipo de ação fornecido não existe.");
         }
-        return acaoService.saveAcao(acao);
+        return acaoService.saveAcao(acaoDto);
+    }
+
+    public List<TipoAcao> getAllTipoAcao() {
+        return tipoAcaoService.getAll();
     }
 
     public void deleteAcao(Long id) {
